@@ -1,11 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class NoteEditor extends Component {
   render() {
     return (
-      <form className="note-editor">
-        <input type="text" name="title" />
-        <textarea name="body" />
+      <form
+        className="note-editor"
+        onSubmit={event => this.props.onEdit(event)}
+      >
+        <input
+          type="text"
+          name="title"
+          defaultValue={this.props.view.title}
+          // onClick={event => this.props.onEdit(event)}
+        />
+        <textarea
+          name="body"
+          defaultValue={this.props.view.body}
+          // onChange={event => this.props.onEdit(event)}
+        />
         <div className="button-row">
           <input className="button" type="submit" value="Save" />
           <button type="button">Cancel</button>

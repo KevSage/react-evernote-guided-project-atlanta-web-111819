@@ -23,6 +23,7 @@ class Content extends Component {
           noteEdit={this.props.noteEdit}
           view={this.props.view}
           onEdit={this.props.onEdit}
+          cancelEdit={this.props.cancelEdit}
         />
       );
     } else {

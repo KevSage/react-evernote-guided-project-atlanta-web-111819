@@ -81,10 +81,10 @@ Look at the gif below to see how the app should look and behave. These are the b
 **Editing Notes**
 
 - [x] When displaying a note in the right panel, show an `Edit` button.
-- [ ] Clicking the `Edit` button will allow the user to edit the title and body in the right panel.
-- [ ] When in edit mode, also show a `Save` button which saves the note via a `PATCH` request.
-- [ ] When in edit mode, also show a `Cancel` button which discards any changes and reverts back to displaying the note.
-- [ ] Clicking a different note while in edit mode should discard your changes and display the new note instead.
+- [x] Clicking the `Edit` button will allow the user to edit the title and body in the right panel.
+- [x] When in edit mode, also show a `Save` button which saves the note via a `PATCH` request.
+- [x] When in edit mode, also show a `Cancel` button which discards any changes and reverts back to displaying the note.
+- [x] Clicking a different note while in edit mode should discard your changes and display the new note instead.
 
 ![result](react-evernote-edit.gif)
 
@@ -98,7 +98,7 @@ Look at the gif below to see how the app should look and behave. These are the b
 
 **Filtering Notes**
 
-- [ ] Implement the filter to search through your notes list by title.
+- [x] Implement the filter to search through your notes list by title.
 
 ![result](react-evernote-filter.gif)
 

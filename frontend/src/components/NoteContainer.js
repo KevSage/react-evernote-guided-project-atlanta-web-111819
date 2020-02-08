@@ -12,12 +12,14 @@ class NoteContainer extends Component {
           <Sidebar
             allNotes={this.props.allNotes}
             showNote={this.props.showNote}
+            handleCreate={this.props.handleCreate}
           />
           <Content
             view={this.props.view}
             edit={this.props.edit}
             noteEdit={this.props.noteEdit}
             onEdit={this.props.onEdit}
+            cancelEdit={this.props.cancelEdit}
           />
         </div>
       </Fragment>

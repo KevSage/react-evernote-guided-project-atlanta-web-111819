@@ -9,7 +9,7 @@ class Sidebar extends Component {
           allNotes={this.props.allNotes}
           showNote={this.props.showNote}
         />
-        <button>New</button>
+        <button onClick={this.props.handleCreate}>New</button>
       </div>
     );
   }

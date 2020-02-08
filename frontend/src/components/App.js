@@ -4,10 +4,14 @@ import NoteContainer from "./NoteContainer";
 
 class App extends Component {
   state = {
+    user: {
+      id: 2,
+      name: "kevinsage"
+    },
     myNotes: [],
     noteViewer: {},
     noteEditor: {},
-    search: " "
+    search: ""
   };
 
   componentDidMount() {
@@ -79,6 +83,13 @@ class App extends Component {
     console.log(this.state);
   };
 
+  cancelEdit = () => {
+    console.log("working");
+    this.setState({
+      noteEditor: {}
+    });
+  };
+
   filterNotes = () => {
     let newFilter = [...this.state.myNotes];
     return newFilter.filter(note => {
@@ -87,6 +98,35 @@ class App extends Component {
         note.body.toLowerCase().includes(this.state.search)
       );
     });
+  };
+
+  handleCreate = () => {
+    let newNote = {
+      title: "default",
+      body: "placeholder",
+      user_id: this.state.user.id
+    };
+    console.log(newNote);
+    fetch("http://localhost:3000//api/v1/notes", {
+      method: "POST",
+      body: JSON.stringify(newNote),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(note => {
+        console.log(note);
+
+        let newMyNotes = [...this.state.myNotes, note];
+        this.setState({
+          myNotes: newMyNotes
+        });
+      });
+    console.log("working");
+    console.log(this.state.myNotes);
+    debugger;
   };
 
   render() {
@@ -101,6 +141,8 @@ class App extends Component {
           edit={this.state.noteEditor}
           noteEdit={this.showEditform}
           onEdit={this.handleEditNote}
+          cancelEdit={this.cancelEdit}
+          handleCreate={this.handleCreate}
         />
       </div>
     );

@@ -90,9 +90,9 @@ Look at the gif below to see how the app should look and behave. These are the b
 
 **Creating Notes**
 
-- [ ] At the bottom of your left sidebar, show a `New` button.
-- [ ] Clicking `New` will create a new note via `POST` request with some default title and body.
-- [ ] This new note should appear in the sidebar.
+- [x] At the bottom of your left sidebar, show a `New` button.
+- [x] Clicking `New` will create a new note via `POST` request with some default title and body.
+- [x] This new note should appear in the sidebar.
 
 ![result](react-evernote-create.gif)
 
@@ -116,3 +116,5 @@ Some suggestions:
 - Rich text formatting
 - Tagging
 - Emailing notes
+
+\*User Name and and logout Link

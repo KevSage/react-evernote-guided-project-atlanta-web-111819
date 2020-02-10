@@ -13,6 +13,8 @@ class NoteContainer extends Component {
             allNotes={this.props.allNotes}
             showNote={this.props.showNote}
             handleCreate={this.props.handleCreate}
+            showCreateForm={this.props.showCreateForm}
+            cancelCreate={this.props.cancelCreate}
           />
           <Content
             view={this.props.view}
@@ -20,6 +22,9 @@ class NoteContainer extends Component {
             noteEdit={this.props.noteEdit}
             onEdit={this.props.onEdit}
             cancelEdit={this.props.cancelEdit}
+            create={this.props.create}
+            cancelCreate={this.props.cancelCreate}
+            handleCreate={this.props.handleCreate}
           />
         </div>
       </Fragment>

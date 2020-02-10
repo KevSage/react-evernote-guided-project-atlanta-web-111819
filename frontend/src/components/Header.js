@@ -1,6 +1,13 @@
 import React from "react";
+// import { NavLink, Router } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink
+} from "react-router-dom";
 
-const Header = () => {
+const Header = props => {
   return (
     <div className="nav-bar">
       <ul>
@@ -8,6 +15,8 @@ const Header = () => {
           <h2>ForNever Note</h2>
         </li>
       </ul>
+      <p>{props.userName}</p>
+      <NavLink to="/login">Logout</NavLink>
     </div>
   );
 };

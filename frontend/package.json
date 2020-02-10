@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "autoprefixer": "^9.7.4",
+    "postcss-cli": "^7.1.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "1.1.4",
+    "tailwindcss": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

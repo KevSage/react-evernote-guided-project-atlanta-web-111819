@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NoteEditor from "./NoteEditor";
 import NoteViewer from "./NoteViewer";
 import Instructions from "./Instructions";
+import NoteCreator from "./NoteCreator";
 
 /*
   Advice: If you cannot figure out how to get this component to work,
@@ -15,6 +16,19 @@ class Content extends Component {
     if (this.props.view.title && !this.props.edit.title) {
       return (
         <NoteViewer view={this.props.view} noteEdit={this.props.noteEdit} />
+      );
+    } else if (this.props.create === true) {
+      return (
+        <NoteCreator
+          // edit={this.props.edit}
+          // noteEdit={this.props.noteEdit}
+          // view={this.props.view}
+          // onEdit={this.props.onEdit}
+          // cancelEdit={this.props.cancelEdit}
+          // create={this.state.noteCreator}
+          cancelCreate={this.props.cancelCreate}
+          handleCreate={this.props.handleCreate}
+        />
       );
     } else if (this.props.edit.title) {
       return (

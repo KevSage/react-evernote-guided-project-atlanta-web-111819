@@ -11,6 +11,7 @@ class App extends Component {
     myNotes: [],
     noteViewer: {},
     noteEditor: {},
+    noteCreator: false,
     search: ""
   };
 
@@ -84,7 +85,6 @@ class App extends Component {
   };
 
   cancelEdit = () => {
-    console.log("working");
     this.setState({
       noteEditor: {}
     });
@@ -100,13 +100,19 @@ class App extends Component {
     });
   };
 
-  handleCreate = () => {
+  showCreateForm = () => {
+    this.setState({
+      noteCreator: true
+    });
+  };
+  handleCreate = event => {
+    event.preventDefault();
+    debugger;
     let newNote = {
-      title: "default",
-      body: "placeholder",
+      title: event.target.title.value,
+      body: event.target.body.value,
       user_id: this.state.user.id
     };
-    console.log(newNote);
     fetch("http://localhost:3000//api/v1/notes", {
       method: "POST",
       body: JSON.stringify(newNote),
@@ -117,22 +123,25 @@ class App extends Component {
     })
       .then(res => res.json())
       .then(note => {
-        console.log(note);
-
         let newMyNotes = [...this.state.myNotes, note];
         this.setState({
-          myNotes: newMyNotes
+          myNotes: newMyNotes,
+          noteViewer: note,
+          noteCreator: false
         });
       });
-    console.log("working");
-    console.log(this.state.myNotes);
-    debugger;
+  };
+
+  cancelCreate = () => {
+    this.setState({
+      noteCreator: false
+    });
   };
 
   render() {
     return (
       <div className="app">
-        <Header />
+        <Header userName={this.state.user.name} />
         <NoteContainer
           onSearch={this.handleSearch}
           allNotes={this.filterNotes()}
@@ -143,6 +152,9 @@ class App extends Component {
           onEdit={this.handleEditNote}
           cancelEdit={this.cancelEdit}
           handleCreate={this.handleCreate}
+          create={this.state.noteCreator}
+          showCreateForm={this.showCreateForm}
+          cancelCreate={this.cancelCreate}
         />
       </div>
     );

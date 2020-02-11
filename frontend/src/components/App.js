@@ -5,8 +5,8 @@ import NoteContainer from "./NoteContainer";
 class App extends Component {
   state = {
     user: {
-      id: 2,
-      name: "kevinsage"
+      id: "",
+      name: ""
     },
     myNotes: [],
     noteViewer: {},
@@ -16,13 +16,34 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000//api/v1/notes")
-      .then(res => res.json())
-      .then(notes => {
-        this.setState({
-          myNotes: notes
-        });
-      });
+    if (localStorage.getItem("token")) {
+      fetch("http://localhost:3000//api/v1/login", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Token": localStorage.getItem("token")
+        }
+      })
+        .then(res => res.json())
+        .then(data =>
+          this.setState({
+            user: {
+              id: data.id,
+              name: data.name
+            },
+            myNotes: data.notes
+          })
+        );
+    }
+
+    // fetch("http://localhost:3000//api/v1/notes")
+    //   .then(res => res.json())
+    //   .then(notes => {
+    //     this.setState({
+    //       myNotes: notes
+    //     });
+    //   });
+    debugger;
   }
 
   showNote = note => {
@@ -101,8 +122,11 @@ class App extends Component {
   };
 
   showCreateForm = () => {
+    console.log(this.state);
     this.setState({
-      noteCreator: true
+      noteViewer: {},
+      noteCreator: true,
+      noteEditor: {}
     });
   };
   handleCreate = event => {
@@ -138,10 +162,19 @@ class App extends Component {
     });
   };
 
+  handleLogout = event => {
+    event.preventDefault();
+    localStorage.clear();
+    console.log(this.state);
+  };
+
   render() {
     return (
       <div className="app">
-        <Header userName={this.state.user.name} />
+        <Header
+          userName={this.state.user.name}
+          handleLogout={this.handleLogout}
+        />
         <NoteContainer
           onSearch={this.handleSearch}
           allNotes={this.filterNotes()}

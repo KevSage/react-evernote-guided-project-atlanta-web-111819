@@ -3,8 +3,30 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Login extends Component {
   state = {
-    username: "",
+    name: "",
     password: ""
+  };
+
+  handleFormInput = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    fetch("http://localhost:3000//api/v1/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ user: { ...this.state } })
+    })
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem("token", data.token);
+        this.props.history.push("/");
+      });
   };
 
   render() {
@@ -13,17 +35,24 @@ class Login extends Component {
         <span>
           <h2> Fornever Note </h2>
           <h2> Login </h2>
-          <form className="login-form">
+          <form
+            className="login-form"
+            onSubmit={event => this.handleSubmit(event)}
+          >
             <input
               className="login-input"
               type="text"
-              name="username"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleFormInput}
               placeholder="Username"
             />
             <input
               className="login-input"
               type="password"
               name="password"
+              value={this.state.password}
+              onChange={this.handleFormInput}
               placeholder="Password"
             />
             <input id="submit" type="submit" value="Login" />

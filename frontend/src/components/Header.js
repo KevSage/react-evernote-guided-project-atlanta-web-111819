@@ -16,7 +16,9 @@ const Header = props => {
         </li>
       </ul>
       <p>{props.userName}</p>
-      <NavLink to="/login">Logout</NavLink>
+      <NavLink onClick={props.handleClick} to="/login">
+        Logout
+      </NavLink>
     </div>
   );
 };

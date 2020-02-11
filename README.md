@@ -108,6 +108,8 @@ When you are finished with the _Delieverables_, you can build out any new featur
 
 Some suggestions:
 
+- Change position of new button
+
 - Add the ability to filter by body, date created, date edited, etc.
 - Sorting by date created, date edited, alphabetical, etc.
 - Use `react-router` to create a multi-page app

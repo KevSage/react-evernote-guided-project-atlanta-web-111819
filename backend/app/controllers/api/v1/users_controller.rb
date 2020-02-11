@@ -8,7 +8,9 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
+    if user.save!
     render json: user, status: 201
+    end
   end
 
   def update
@@ -26,9 +28,14 @@ class Api::V1::UsersController < ApplicationController
     render json: @user, status: 200
   end
 
+  def decode
+    @currentUser = User.find_by(id: current_user)
+   render json: @currentUser
+  end
+
   private
   def user_params
-    params.permit(:name)
+    params.require(:user).permit(:name, :password)
   end
 
   def set_user

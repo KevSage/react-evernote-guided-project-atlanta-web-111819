@@ -35,7 +35,6 @@ class Login extends Component {
       <div className="login">
         <span>
           <h2> Fornever Note </h2>
-          <h2> Login </h2>
           <form
             className="login-form"
             onSubmit={event => this.handleSubmit(event)}
@@ -58,7 +57,9 @@ class Login extends Component {
             />
             <input id="submit" type="submit" value="Login" />
           </form>
-          <Link to="/signup">Signup</Link>
+          <Link id="submit" to="/signup">
+            Signup
+          </Link>
         </span>
       </div>
     );

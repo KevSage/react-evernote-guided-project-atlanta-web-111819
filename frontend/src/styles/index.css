@@ -65,6 +65,7 @@ p.instructions {
   background-repeat: no-repeat;
   text-align: center;
   color: #ffffff;
+  padding-top: 50px;
 }
 .login-input {
   width: 50%;
@@ -72,20 +73,43 @@ p.instructions {
   margin: auto;
   margin-top: 20px;
 }
-.login span h2 {
-  margin: 0;
-}
 
 .signup {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  font-size: 100px;
+  font-size: 10px;
   width: 50%;
   margin: auto;
   vertical-align: center;
+  padding-top: 70px;
+  height: 500px;
 }
 
-.signup h2 {
-  margin: 0;
+.signup h2,
+.login span h2,
+.nav-item h2 {
+  color: #fff;
+  font-size: 62px;
+  font-family: "ubuntu";
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: "Josefin Sans", sans-serif;
+  background: linear-gradient(to right, #e72a3a 10%, #fff 50%, #5bdaff 60%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 3s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }
 
 .nav-item {
@@ -172,6 +196,7 @@ div.sidebar ul li:hover {
 }
 .sidebar h4 {
   font-size: 20px;
+  color: #408c99;
 }
 
 .detail {
@@ -210,6 +235,31 @@ input[type="submit"] {
   color: white;
   font-size: 14px;
   letter-spacing: 0.5px;
+}
+#submit {
+  box-shadow: 0px 10px 14px -7px #276873;
+  background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  background-color: #599bb3;
+  border-radius: 8px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 13px 32px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #3d768a;
+  margin: 10px;
+}
+
+#submit:hover {
+  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color: #408c99;
+}
+#submit:active {
+  position: relative;
+  top: 1px;
 }
 
 button:hover,

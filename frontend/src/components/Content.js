@@ -15,7 +15,11 @@ class Content extends Component {
   renderContent = () => {
     if (this.props.view.title && !this.props.edit.title) {
       return (
-        <NoteViewer view={this.props.view} noteEdit={this.props.noteEdit} />
+        <NoteViewer
+          view={this.props.view}
+          noteEdit={this.props.noteEdit}
+          handleDelete={this.props.handleDelete}
+        />
       );
     } else if (this.props.create === true) {
       return (

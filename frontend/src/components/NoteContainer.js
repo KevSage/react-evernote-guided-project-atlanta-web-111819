@@ -25,6 +25,7 @@ class NoteContainer extends Component {
             create={this.props.create}
             cancelCreate={this.props.cancelCreate}
             handleCreate={this.props.handleCreate}
+            handleDelete={this.props.handleDelete}
           />
         </div>
       </Fragment>

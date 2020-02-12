@@ -35,15 +35,6 @@ class App extends Component {
           })
         );
     }
-
-    // fetch("http://localhost:3000//api/v1/notes")
-    //   .then(res => res.json())
-    //   .then(notes => {
-    //     this.setState({
-    //       myNotes: notes
-    //     });
-    //   });
-    debugger;
   }
 
   showNote = note => {
@@ -131,7 +122,6 @@ class App extends Component {
   };
   handleCreate = event => {
     event.preventDefault();
-    debugger;
     let newNote = {
       title: event.target.title.value,
       body: event.target.body.value,
@@ -168,6 +158,23 @@ class App extends Component {
     console.log(this.state);
   };
 
+  handleDelete = () => {
+    console.log(this.state.noteViewer.id);
+    fetch(
+      "http://localhost:3000//api/v1/notes/" + `${this.state.noteViewer.id}`,
+      {
+        method: "DELETE"
+      }
+    )
+      .then(res => res.text()) // or res.json()
+      .then(res => {
+        this.setState({
+          noteViewer: {}
+        });
+        console.log(res);
+      });
+  };
+
   render() {
     return (
       <div className="app">
@@ -188,6 +195,7 @@ class App extends Component {
           create={this.state.noteCreator}
           showCreateForm={this.showCreateForm}
           cancelCreate={this.cancelCreate}
+          handleDelete={this.handleDelete}
         />
       </div>
     );
